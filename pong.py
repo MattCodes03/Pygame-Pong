@@ -100,20 +100,24 @@ def main(window):
         clock.tick(FPS)
 
         keys = pygame.key.get_pressed()
+        # If Up Arrow Pressed move player paddle (Left Paddle) on Y-Axis accordingly and Check Paddle Collision with Top and Bottom of Screen
         if keys[pygame.K_UP] and player.y - player.VEL >= 0:
             player.move(-1)
-        if keys[pygame.K_DOWN] and player.y + player.height + player.VEL <= HEIGHT:
+         # If Down Arrow Pressed move player paddle (left Paddle) on Y-Axis accordingly
+        if keys[pygame.K_DOWN] and player.y + PADDEL_HEIGHT + player.VEL <= HEIGHT:
             player.move(1)
 
+        # AI Paddle Collision for Top and Bottom of Screen
         if ai.y - ai.VEL >= 0:
             ai.y = 0
-        if ai.y + ai.height + ai.VEL <= HEIGHT:
-            ai.y = ai.height + HEIGHT
+        if ai.y + PADDEL_HEIGHT + ai.VEL <= HEIGHT:
+            ai.y = HEIGHT
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
 
+        # Call Functions
         ball.move()
         ai.move(ball.y)
         ball_collision(ball, player, ai)
