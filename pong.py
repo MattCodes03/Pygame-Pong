@@ -61,8 +61,11 @@ def ball_collision(ball, player, ai):
 
                 # Calculate Ball's new Y Directional Velocity
                 middle_y = player.y + PADDEL_HEIGHT / 2
+                # Work out the angle the ball will come off paddle at
                 difference_in_y = middle_y - ball.y
+                # Clamps the angle so the ball is directed in the correct direction
                 reduction_factor = (PADDEL_HEIGHT / 2) / ball.MAX_VEL
+                # Calculate the Directional Velocity of the Ball after colliding with paddel
                 y_vel = difference_in_y / reduction_factor
                 ball.y_vel = y_vel * -1
 
@@ -74,8 +77,11 @@ def ball_collision(ball, player, ai):
 
                 # Calculate Ball's new Y Directional Velocity
                 middle_y = ai.y + PADDEL_HEIGHT / 2
+                # Work out the angle the ball will come off paddle at
                 difference_in_y = middle_y - ball.y
+                # Clamps the angle so the ball doesn't just go flying away
                 reduction_factor = (PADDEL_HEIGHT / 2) / ball.MAX_VEL
+                # Calculate the Directional Velocity of the Ball after colliding with paddel
                 y_vel = difference_in_y / reduction_factor
                 ball.y_vel = y_vel * -1
 
